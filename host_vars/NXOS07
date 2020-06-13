@@ -1,0 +1,22 @@
+hostname: NXOS07
+interfaces:
+- address: 20.20.20.2
+  description: IOSL2-1 gi0/1
+  interface: Ethernet22
+  mask: /24
+  ospf: enabled
+  hsrp: enabled
+- address: 192.168.3.2
+  description: ISP-CORE
+  interface: Ethernet2/1
+  mask: /24
+- address: 7.7.7.7
+  interface: loopback0
+  mask: /32
+  ospf: enabled
+asn: 20
+bgp_neighbors:
+- neighbor: 192.168.3.1
+  remote_as: 100
+- neighbor: 8.8.8.8
+  remote_as: 20

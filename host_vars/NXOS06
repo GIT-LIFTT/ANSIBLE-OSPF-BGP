@@ -1,0 +1,22 @@
+hostname: NXOS06
+interfaces:
+- address: 10.10.10.2
+  description: IOSL2-1 gi0/2
+  interface: Ethernet2/1
+  mask: /24
+  ospf: enabled
+  hsrp: 10.10.10.4
+- address: 192.168.2.2
+  description: ISP-CORE
+  interface: Ethernet2/2
+  mask: /24
+- address: 6.6.6.6
+  interface: loopback0
+  mask: /32
+  ospf: enabled
+asn: 10
+bgp_neighbors:
+- neighbor: 192.168.2.1
+  remote_as: 100
+- neighbor: 5.5.5.5
+  remote_as: 10
