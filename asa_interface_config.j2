@@ -1,0 +1,14 @@
+{% for intf in interfaces %}
+interface {{ intf.interface }}
+  {% if intf.description is defined %}
+  description {{ intf.description }}
+  {% endif %}
+  nameif {{intf.nameif}}
+  security-level {{intf.security-level}}
+  ip address {{ intf.address }}{{ intf.mask }}
+  no shutdown
+  exit
+  {% endif %}
+  exit
+!
+{% endfor %}

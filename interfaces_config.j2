@@ -1,0 +1,23 @@
+!
+{% for intf in interfaces %}
+interface {{ intf.interface }}
+  {% if intf.description is defined %}
+  description {{ intf.description }}
+  {% endif %}
+  {% if 'Ethernet' in intf.interface %}
+  no switchport
+  no mac-address
+  {% endif %}
+  ip address {{ intf.address }}{{ intf.mask }}
+  no shutdown
+  {% if intf.ospf is defined %}
+  ip router ospf 1 area 0
+  {% endif %}
+  {% if intf.hsrp is defined %}
+  hsrp 1 ipv4
+  ip {{intf.hsrp}}
+  exit
+  {% endif %}
+  exit
+!
+{% endfor %}
